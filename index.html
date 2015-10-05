@@ -15,12 +15,18 @@
                     return;
                 lockKristopher = true;
 
+                document.getElementsByClassName("concert")[0].style.backgroundColor = "black";
                 document.getElementsByClassName("oval-thought-border")[0].style.display = "none";
 
                 var elements = document.getElementsByClassName("speaker");
-                for (var i = 0, len = elements.length; i < len; i++) {
-                    elements[i].style.display = "block";
-                }
+                elements[0].style.left = "0";
+                elements[1].style.right = "0";
+
+                // turn off transition after the animation is done
+                setTimeout(function () {
+                    elements[0].style.transition = "0s";
+                    elements[1].style.transition = "0s";
+                }, 1000);
 
                 document.getElementById('concert-iframe').src = "https://youtube.com/embed/BWO6VDxSg4o?autoplay=1&controls=0&showinfo=0&autohide=1";
 

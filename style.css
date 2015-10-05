@@ -7,10 +7,10 @@ body, html {margin: 0; padding: 0; min-width: 60vh;}
 
 #ksplash {}
 #ksplash .character {height:50%; display: block; margin: 0 auto; position: absolute; bottom: 0; left: 60%;}
-#ksplash .concert {position: absolute; left: -30%; top: -30%; width: 160%; height: 160%; z-index: -99}
-#ksplash .speaker {height: 100%; position: absolute; opacity: .6; display: none;}
-#ksplash .speaker.l {left: 0;}
-#ksplash .speaker.r {right: 0;}
+#ksplash .concert {position: absolute; left: -30%; top: -30%; width: 160%; height: 160%; z-index: -99; transition-duration: .5s;}
+#ksplash .speaker {height: 100vmin; position: absolute; transition-duration: 1s; opacity: .6; bottom: 0}
+#ksplash .speaker.l {left: -27vh;}
+#ksplash .speaker.r {right: -27vh;}
 #ksplash blockquote {position: absolute; right: 40%; bottom: 40%; padding: .5em;}
 #ksplash p {font-size: 5vh; padding: 1em;}
 
