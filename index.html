@@ -64,7 +64,7 @@
             <blockquote id="myspeech-container" class="oval-thought-border">
                 <p id="myspeech">Hi, I'm Kristopher...</p>
             </blockquote>
-            <a href="javascript:void(0)" onClick="return animateKristopher()"><img id="kristopher" class="character" src="img/bobble-me2.png"></a>
+            <a href="javascript:void(0)" onClick="return animateKristopher()"><img id="kristopher" class="character" src="img/bobble-me2.jpg"></a>
         </div>
 
         <div id="rsplash" class="splash">
@@ -160,10 +160,30 @@
                 setTimeout(startKristopherSpeech, 10500);
             }
 
+            function preload() {
+                var loaded = false;
+                var bobble = function () {
+                    if (loaded) return; else loaded = true;
+                    document.getElementById("kristopher").src = img.src;
+                };
+                var img = new Image();
+                img.src = "img/bobble-me2.png";
+                img.addEventListener('load', bobble);
+                if (img.complete) bobble();
+
+                var imgRachel = new Image();
+                imgRachel.src = "img/city-scenery.jpg";
+
+                var imgSanJose = new Image();
+                imgSanJose.src = "img/sky.jpg";
+            }
+
             function init() {
                 document.getElementById('email').href = 'mailto:kristopherwindsor' + '@gmail.com';
                 startKristopherSpeech();
                 document.getElementById('concert-iframe').src = ""; // refreshing the page would not stop the video from playing
+
+                setTimeout(preload, 1000);
             }
         </script>
     </body>
