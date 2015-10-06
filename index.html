@@ -15,6 +15,8 @@
                     return;
                 lockKristopher = true;
 
+                var isIos = navigator.userAgent.match(/iPhone|iPad|iPod/i);
+
                 document.getElementsByClassName("concert")[0].style.backgroundColor = "black";
                 document.getElementsByClassName("oval-thought-border")[0].style.display = "none";
 
@@ -28,7 +30,12 @@
                     elements[1].style.transition = "0s";
                 }, 1000);
 
-                document.getElementById('concert-iframe').src = "https://youtube.com/embed/BWO6VDxSg4o?autoplay=1&controls=0&showinfo=0&autohide=1";
+                if (isIos) {
+                    document.getElementsByClassName("concert")[0].style.backgroundImage = "url(img/rave.gif)";
+                } else {
+                    document.getElementsByClassName("concert")[0].className += " big";
+                    document.getElementById('concert-iframe').src = "https://youtube.com/embed/BWO6VDxSg4o?autoplay=1&controls=0&showinfo=0&autohide=1";
+                }
 
                 var h = 0, v = 0;
                 var fn = function () {
@@ -41,7 +48,7 @@
                     document.getElementById("kristopher").style.bottom = "-" + (h / 10) + "%";
                     setTimeout(fn, 30);
                 };
-                setTimeout(fn, 60000);
+                setTimeout(fn, isIos ? 0 : 60000);
             }
 
             function animateRachel() {
@@ -85,7 +92,7 @@
     <body onLoad="init()">
         <div id="ksplash" class="splash">
             <div class="concert">
-                <iframe id="concert-iframe" frameborder="0" height="100%" width="100%" src="favicon.png"></iframe>
+                <iframe id="concert-iframe" frameborder="0" height="100%" width="100%" src=""></iframe>
             </div>
             <img class="speaker l" src="img/big-speaker.jpg">
             <img class="speaker r" src="img/big-speaker.jpg">
