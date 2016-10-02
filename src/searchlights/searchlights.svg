@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="640" height="512" onload="init(evt)">
+
+	<script type="text/ecmascript"><![CDATA[
+		var svgDocument=null;
+		var mangle = 0;
+		
+		function init(e){
+			svgDocument = e.target.ownerDocument;
+			animate();
+			setInterval(animate, 30);
+		}
+		
+		function animate(){
+			mangle += .01;
+			var angle = 30 * Math.cos(mangle);
+			
+			var rotate1 = "rotate(" + angle + ", 355, 450)";
+			var rotate2 = "rotate(" + (angle * -1) + ", 355, 450)";
+			svgDocument.getElementById("light1").setAttribute("transform", rotate1);
+			svgDocument.getElementById("light2").setAttribute("transform", rotate2);
+		}
+	]]></script>
+
+	<image x="0" y="0" width="640px" height="512px" xlink:href="background.jpg" />
+	<g>
+		<image id="light1" x="349px" y="-100px" width="12px" height="550px" xlink:href="beam.png" />
+		<image id="light2" x="349px" y="-100px" width="12px" height="550px" xlink:href="beam.png" />
+	</g>
+	<image x="0" y="0" width="640px" height="512px" xlink:href="house.png" />
+</svg>

@@ -1,0 +1,9 @@
+@font-face {font-family: Champagne; src: url('stuff/cac_champagne.ttf');}
+body, html {margin: 0; padding: 0;}
+#content {color: white; font-family: "Times New Roman"; font-size: 2em; margin: 0 auto; padding: 1px 0; width: 1000px; background: url("stuff/rose-background.jpg") repeat scroll 0 625px red;}
+h1 {text-align: center; font-family: Champagne; font-size: 3em;}
+h2 {margin-left: 50px; font-family: Champagne;}
+a {color: white;}
+a:hover {color: white;}
+p {margin-left: 50px; line-height: .6em;}
+br {margin-top: 2em;}
