@@ -1,0 +1,22 @@
+body {margin: 0 auto; max-width: 920px; min-width: 600px; padding: 0 12px;}
+h1, p {font-family: "Baskerville";}
+h1 {font-size: 96px; font-weight: normal;}
+p {font-size: 28px; line-height: 40px; margin: 0 0 0 280px; padding-bottom: 12px;}
+p:first-letter {font-size: 40px;}
+body > img {border-radius: 120px; float: left; margin: 0; width: 240px;}
+
+.links, .printlink {clear: left; line-height: 26px; padding: 60px 0 20px 0;}
+.links, .printlink {text-align: center;}
+.links a, .printlink a {color: #000; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; font-size: 24px; outline: none; text-decoration: none; text-transform: uppercase;}
+
+.links form {display: inline;}
+.links input[type="image"] {vertical-align: top;}
+.links a {border-right: 1px solid #888; margin-right: .5em; padding-right: .5em;}
+.links a:hover {text-decoration: underline;}
+
+@media screen {
+  .printlink {display: none;}
+}
+@media print {
+  .links {display: none;}
+}
