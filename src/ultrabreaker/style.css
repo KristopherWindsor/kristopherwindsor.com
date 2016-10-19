@@ -1,0 +1,167 @@
+*
+	{
+	margin: 0;
+	padding: 0;
+	}
+
+a	{
+	color: black;
+	outline: none;
+	text-decoration: none;
+	}
+
+a:hover
+	{
+	color: white;
+	}
+
+body
+	{
+	background: white url(img/background.jpg) repeat fixed center center;
+	font-size: 16px;
+	height: 100%;
+	width: 100%;
+	}
+
+img
+	{
+	border: 0;
+	outline: 0;
+	}
+
+.box
+	{
+	height: 560px;
+	margin: 64px auto 0 auto;
+	width: 720px;
+	}
+
+.boxbackground
+	{
+	height: 560px;
+	position: absolute;
+	width: 720px;
+	}
+
+.boxcontent
+	{
+	height: 560px;
+	position: absolute;
+	width: 720px;
+	}
+
+.downloadlink
+	{
+	bottom: 0;
+	height: 128px;
+	opacity: 0.75;
+	position: absolute;
+	right: 0;
+	width: 128px;
+	}
+
+.downloadlink:hover
+	{
+	opacity: 1.00;
+	}
+
+.getgame
+	{
+	bottom: 0;
+	display: none;
+	height: 480px;
+	position: absolute;
+	right: 0;
+	width: 640px;
+	}
+
+.getgamebackground
+	{
+	height: 480px;
+	position: absolute;
+	width: 640px;
+	}
+
+.getgamecontent
+	{
+	height: 480px;
+	position: absolute;
+	width: 640px;
+	}
+
+.getgamecontent img
+	{
+	height: 128px;
+	left: 240px;
+	opacity: 0.75;
+	top: 64px;
+	position: absolute;
+	width: 320px;
+	}
+
+.getgamecontent img:hover
+	{
+	opacity: 1.00;
+	}
+
+.getgamecontent p
+	{
+	left: 240px;
+	line-height: 160%;
+	position: absolute;
+	top: 224px;
+	width: 320px;
+	}
+
+.links
+	{
+	margin: 28px 0 0 120px;
+	}
+
+.links ul li
+	{
+	display: inline;
+	margin-left: 32px;
+	}
+
+.logo
+	{
+	display: block;
+	height: 160px;
+	left: -40px;
+	position: absolute;
+	top: -40px;
+	width: 160px;
+	}
+
+.screengrid
+	{
+	height: 960px;
+	position: absolute;
+	width: 1280px;
+	}
+
+.screenshot
+	{
+	bottom: 0;
+	height: 480px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	width: 640px;
+	}
+
+.screenshot img
+	{
+	position: absolute;
+	}
+
+.screenshot .info
+	{
+	display: none;
+	}
+
+.screenshot:hover .info
+	{
+	display: block;
+	}
