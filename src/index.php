@@ -22,6 +22,8 @@ header("Link: </img/city-scenery.jpg>; rel=preload; as=image", false);
 
         <meta name="description" content="Kristopher Windsor's domain">
         <meta name="keywords" content="kristopher windsor, kristopherwindsor, php, pinger, sjsu, san jose">
+
+        <script src="script.js"></script>
     </head>
     <body onLoad="init()">
         <div id="ksplash" class="splash">
@@ -54,7 +56,5 @@ header("Link: </img/city-scenery.jpg>; rel=preload; as=image", false);
                 <li><a href="http://www.linkedin.com/in/kristopherwindsor"><img src="img/linkedin.png" alt="LinkedIn"></a></li>
             </ul>
         </footer>
-
-        <script src="script.js"></script>
     </body>
 </html>
