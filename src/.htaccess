@@ -1,4 +1,4 @@
-<FilesMatch "\.(html)$">
+<FilesMatch "\.(html|php)$">
 Header append Link "</cabinet/games.jpg>; rel=preload; as=image"
 </FilesMatch>
 
