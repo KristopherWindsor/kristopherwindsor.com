@@ -1,6 +1,8 @@
 <?php
 
 header("Link: </style.css>; rel=preload; as=style", false);
+header("Link: </script.js>; rel=preload; as=script", false);
+header("Link: </img/bobble-me2.jpg>; rel=preload; as=image", false);
 
 header("Link: </img/rachel-cutout.png>; rel=preload; as=image", false);
 header("Link: </img/san-jose-cutout.png>; rel=preload; as=image", false);
