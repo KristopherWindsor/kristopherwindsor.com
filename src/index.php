@@ -55,6 +55,6 @@ header("Link: </img/city-scenery.jpg>; rel=preload; as=image", false);
             </ul>
         </footer>
 
-        <script src="script.js">
+        <script src="script.js"></script>
     </body>
 </html>
