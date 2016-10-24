@@ -1,0 +1,4 @@
+<FilesMatch "\.(html)$">
+Header append Link "</cabinet/games.jpg>; rel=preload; as=image"
+</FilesMatch>
+
