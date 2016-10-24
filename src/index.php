@@ -1,6 +1,18 @@
 <?php
+
 header("Link: </style.css>; rel=preload; as=style", false);
+
+header("Link: </img/rachel-cutout.png>; rel=preload; as=image", false);
+header("Link: </img/san-jose-cutout.png>; rel=preload; as=image", false);
+header("Link: </img/github.png>; rel=preload; as=image", false);
+header("Link: </img/linkedin.png>; rel=preload; as=image", false);
+header("Link: </img/gmail.png>; rel=preload; as=image", false);
 header("Link: </img/big-speaker.jpg>; rel=preload; as=image", false);
+header("Link: </img/bobble-me2.png>; rel=preload; as=image", false);
+header("Link: </img/rave.gif>; rel=preload; as=image", false);
+header("Link: </img/sky.jpg>; rel=preload; as=image", false);
+header("Link: </img/city-scenery.jpg>; rel=preload; as=image", false);
+
 ?><!DOCTYPE html>
 <html>
     <head>
