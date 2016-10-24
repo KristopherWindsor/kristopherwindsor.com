@@ -13,4 +13,4 @@
 	Header append Link "</img/rave.gif>; rel=preload; as=image"
 	Header append Link "</img/sky.jpg>; rel=preload; as=image"
 	Header append Link "</img/city-scenery.jpg>; rel=preload; as=image"
-</FilesMatch>
+</Files>
