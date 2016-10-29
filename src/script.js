@@ -42,12 +42,12 @@ function animateKristopher() {
 }
 
 function animateRachel() {
-    document.getElementById('rsplash').style.backgroundImage = "url(img/city-scenery.jpg)";
+    document.getElementById("rsplash").className += " showImage";
     return false;
 }
 
 function animateSanJose() {
-    document.getElementById('living').style.backgroundImage = "url(img/sky.jpg)";
+    document.getElementById("living").className += " showImage";
     return false;
 }
 
@@ -73,6 +73,7 @@ function startKristopherSpeech() {
 }
 
 function preload() {
+    // Swap the JPG with an identical PNG (larger) that has transparency
     var loaded = false;
     var bobble = function () {
         if (loaded) return; else loaded = true;
@@ -82,12 +83,6 @@ function preload() {
     img.src = "img/bobble-me2.png";
     img.addEventListener('load', bobble);
     if (img.complete) bobble();
-
-    var imgRachel = new Image();
-    imgRachel.src = "img/city-scenery.jpg";
-
-    var imgSanJose = new Image();
-    imgSanJose.src = "img/sky.jpg";
 }
 
 function init() {
@@ -95,5 +90,5 @@ function init() {
     startKristopherSpeech();
     document.getElementById('concert-iframe').src = ""; // refreshing the page would not stop the video from playing
 
-    setTimeout(preload, 1000);
+    preload();
 }
