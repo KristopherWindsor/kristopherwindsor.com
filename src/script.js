@@ -60,15 +60,18 @@ function startKristopherSpeech() {
     var fadeout = function () { c.className = "oval-thought-border fadeout"; };
     var fadein = function () { c.className = "oval-thought-border fadein"; };
 
+    setTimeout(fadein, 0);
     setTimeout(fadeout, 3000);
+
     setTimeout(function () { p.innerHTML = "Please click me..."; }, 3500);
     setTimeout(fadein, 3500);
     setTimeout(fadeout, 6500);
+
     setTimeout(function () { p.innerHTML = "You know you want to..."; }, 7000);
     setTimeout(fadein, 7000);
     setTimeout(fadeout, 10000);
+
     setTimeout(function () { p.innerHTML = "Hi, I'm Kristopher..."; }, 10500);
-    setTimeout(fadein, 10500);
     setTimeout(startKristopherSpeech, 10500);
 }
 
