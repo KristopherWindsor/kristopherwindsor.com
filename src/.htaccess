@@ -9,8 +9,4 @@
 	Header append Link "</img/linkedin.png>; rel=preload; as=image"
 	Header append Link "</img/gmail.png>; rel=preload; as=image"
 	Header append Link "</img/big-speaker.jpg>; rel=preload; as=image"
-	Header append Link "</img/bobble-me2.png>; rel=preload; as=image"
-	Header append Link "</img/rave.gif>; rel=preload; as=image"
-	Header append Link "</img/sky.jpg>; rel=preload; as=image"
-	Header append Link "</img/city-scenery.jpg>; rel=preload; as=image"
 </Files>

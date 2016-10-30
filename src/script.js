@@ -72,7 +72,11 @@ function startKristopherSpeech() {
     setTimeout(startKristopherSpeech, 10500);
 }
 
-function preload() {
+function postload() {
+    // Loading hidden CSS is deferred
+    document.getElementById("rsplash").className += " activated";
+    document.getElementById("living").className += " activated";
+
     // Swap the JPG with an identical PNG (larger) that has transparency
     var loaded = false;
     var bobble = function () {
@@ -90,5 +94,5 @@ function init() {
     startKristopherSpeech();
     document.getElementById('concert-iframe').src = ""; // refreshing the page would not stop the video from playing
 
-    preload();
+    postload();
 }
