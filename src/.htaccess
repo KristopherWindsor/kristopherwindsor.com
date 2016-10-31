@@ -8,5 +8,4 @@
 	Header append Link "</img/github.png>; rel=preload; as=image"
 	Header append Link "</img/linkedin.png>; rel=preload; as=image"
 	Header append Link "</img/gmail.png>; rel=preload; as=image"
-	Header append Link "</img/big-speaker.jpg>; rel=preload; as=image"
 </Files>

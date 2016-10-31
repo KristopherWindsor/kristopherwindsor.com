@@ -73,11 +73,15 @@ function startKristopherSpeech() {
 }
 
 function postload() {
-    // Loading hidden CSS is deferred
+    // Loading hidden background images is deferred
     document.getElementById("rsplash").className += " activated";
     document.getElementById("living").className += " activated";
 
-    // Swap the JPG with an identical PNG (larger) that has transparency
+    // Load speakers for maximum base
+    for (var i = 0; i <= 1; i++)
+        document.getElementById("ksplash").getElementsByClassName("speaker")[i].src = "img/big-speaker.jpg";
+
+    // Swap the JPG of me with an identical PNG (larger) that has transparency
     var loaded = false;
     var bobble = function () {
         if (loaded) return; else loaded = true;
