@@ -94,5 +94,6 @@ function init() {
     startKristopherSpeech();
     document.getElementById('concert-iframe').src = ""; // refreshing the page would not stop the video from playing
 
-    postload();
+    // Allow time for a render before post-loading
+    setTimeout(postload, 1);
 }
