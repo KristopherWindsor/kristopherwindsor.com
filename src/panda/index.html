@@ -10,6 +10,7 @@
         <style>
             body, html {width: 100vw; height: 100vh; position: relative; margin: 0; padding: 0;}
             #panda {position: absolute; width: 100px; height: 100px; bottom: 0; left: 50%; margin-left: -50px;}
+            #panda img {display: block;}
             #jumping {position: absolute; bottom: 0px; left: 10px;}
             #sleeping {position: absolute; bottom: 0px; right: 20px;}
         </style>
@@ -17,12 +18,19 @@
         <script>
             function showJumping() {
                 document.getElementById("jumping").src = "img/panda-jumping.gif";
+                document.getElementById("jumping").style.display = "block";
+
+                document.getElementById("sleeping").style.display = "none";
                 document.getElementById("sleeping").src = "";
             }
 
             function showSleeping() {
                 document.getElementById("sleeping").src = "img/panda-sleeping.gif";
+                document.getElementById("sleeping").style.display = "block";
+
+                document.getElementById("jumping").style.display = "none";
                 document.getElementById("jumping").src = "";
+
                 setTimeout(showJumping, 2400);
             }
         </script>
