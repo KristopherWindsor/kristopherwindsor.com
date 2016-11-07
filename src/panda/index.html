@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pandas for Rachel</title>
+
+        <meta name="description" content="Pandas for Rachel">
+        <meta name="keywords" content="pandas">
+
+        <style>
+            body, html {width: 100vw; height: 100vh; position: relative; margin: 0; padding: 0;}
+            #panda {position: absolute; width: 100px; height: 100px; bottom: 0; left: 50%; margin-left: -50px;}
+            #jumping {position: absolute; bottom: 0px; left: 10px;}
+            #sleeping {position: absolute; bottom: 0px; right: 20px;}
+        </style>
+
+        <script>
+            function showJumping() {
+                document.getElementById("jumping").src = "img/panda-jumping.gif";
+                document.getElementById("sleeping").src = "";
+            }
+
+            function showSleeping() {
+                document.getElementById("sleeping").src = "img/panda-sleeping.gif";
+                document.getElementById("jumping").src = "";
+                setTimeout(showJumping, 2400);
+            }
+        </script>
+    </head>
+    <body onLoad="showJumping()">
+        <div id="panda">
+            <img id="jumping" src="" onClick="showSleeping()">
+            <img id="sleeping" src="">
+        </div>
+    </body>
+</html>
