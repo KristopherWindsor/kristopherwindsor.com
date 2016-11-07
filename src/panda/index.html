@@ -8,14 +8,28 @@
         <meta name="keywords" content="pandas">
 
         <style>
-            body, html {width: 100vw; height: 100vh; position: relative; margin: 0; padding: 0;}
-            #panda {position: absolute; width: 100px; height: 100px; bottom: 0; left: 50%; margin-left: -50px;}
+            body, html {width: 100vw; height: 100%; position: relative; margin: 0; padding: 0;}
+            #panda {position: absolute; width: 100px; height: 100px; bottom: 100vh; left: 50%; margin-left: -50px;}
             #panda img {display: block;}
             #jumping {position: absolute; bottom: 0px; left: 10px;}
             #sleeping {position: absolute; bottom: 0px; right: 20px;}
         </style>
 
         <script>
+            function init() {
+                dropDown();
+                showJumping();
+            }
+
+            var currentHeight = 100;
+            function dropDown() {
+                currentHeight -= 2;
+                document.getElementById("panda").style.bottom = currentHeight + "vh";
+                if (currentHeight > 0) {
+                    setTimeout(dropDown, 20);
+                }
+            }
+
             function showJumping() {
                 document.getElementById("jumping").src = "img/panda-jumping.gif";
                 document.getElementById("jumping").style.display = "block";
@@ -35,7 +49,7 @@
             }
         </script>
     </head>
-    <body onLoad="showJumping()">
+    <body onLoad="init()">
         <div id="panda">
             <img id="jumping" src="" onClick="showSleeping()">
             <img id="sleeping" src="">
