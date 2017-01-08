@@ -5,7 +5,8 @@ ini_set('display_startup_errors',1);
 error_reporting(-1);
 
 $system = @$_REQUEST['system'];
-@$ip = $_SERVER['REMOTE_ADDR'];
+@$ip = apache_request_headers()['X-Real-IP']; // Likely behind a reverse proxy
+if (!$ip) @$ip = $_SERVER['REMOTE_ADDR'];
 
 if (!ctype_alpha($system) || strlen($system) > 30) $system = 'bad';
 
