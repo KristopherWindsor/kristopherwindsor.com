@@ -23,10 +23,10 @@
 				return '<span class="red">(' + (-number) + ')</span>';
 			}
 
-			var initialSurplus = -4635;
+			var initialSurplus = -3990;
 			var annualBudget   = 5000;
 			var daysIntoYear   = getDayOfYear();
-			var amountAccrued  = Math.round(100 * annualBudget * daysIntoYear / 365) / 100;
+			var amountAccrued  = Math.round(annualBudget * daysIntoYear / 365);
 			var salaryBonus    = 0;
 			var amountSpent    = 0;
 			var net            = amountAccrued + initialSurplus + salaryBonus - amountSpent;
