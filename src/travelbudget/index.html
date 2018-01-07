@@ -28,7 +28,6 @@
             }
 
             function renderNumbers() {
-                console.log('rendering');
                 $("#initialSurplus").html(formatNumber(initialSurplus));
                 $("#annualBudget").html(formatNumber(annualBudget));
                 $("#daysIntoYear").html(formatNumber(daysIntoYear));
@@ -44,8 +43,8 @@
                     pointsEarned = 0;
                     lines = data.split("\n");
                     $.each(lines, function(line){
-                        if (line != "")
-                            pointsEarned += parseInt(line) / 100;
+                        if (lines[line] != "")
+                            pointsEarned += parseInt(lines[line]) / 100;
                     });
                     renderNumbers();
                 });
