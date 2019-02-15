@@ -19,6 +19,7 @@
       ?>
 
     </div>
+    <img src="linkedin-banner.png" alt="" style="display: none">
     <div id="download">
       <a href="source/kristopher.pdf">View PDF</a> |
       <a href="source/resume.markdown">Plain text</a>
