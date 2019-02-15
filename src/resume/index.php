@@ -10,6 +10,7 @@
     <meta name="keywords" content="kristopher windsor, kristopherwindsor, php, full-stack developer, backend developer, front-end developer, php developer">
   </head>
   <body>
+    <img src="linkedin-banner.png" alt="">
     <div id="box">
       <?php
       require_once __DIR__ . '/vendor/Parsedown.php';
@@ -17,9 +18,8 @@
       $parsedown = new Parsedown();
       echo $parsedown->text($markdown);
       ?>
-
     </div>
-    <img src="linkedin-banner.png" alt="" style="display: none">
+
     <div id="download">
       <a href="source/kristopher.pdf">View PDF</a> |
       <a href="source/resume.markdown">Plain text</a>
