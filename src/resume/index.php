@@ -10,7 +10,6 @@
     <meta name="keywords" content="kristopher windsor, kristopherwindsor, php, full-stack developer, backend developer, front-end developer, php developer">
   </head>
   <body>
-    <img src="linkedin-banner.jpg" alt="">
     <div id="box">
       <?php
       require_once __DIR__ . '/vendor/Parsedown.php';
