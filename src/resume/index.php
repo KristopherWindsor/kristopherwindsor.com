@@ -1,7 +1,5 @@
 <?php
 
-header('Content-Type: application/pdf');
-header('Cache-Control: public, max-age=3600');
-
-readfile(__DIR__ . '/source/kristopher.pdf');
+http_response_code(301);
+header('Location: https://kristopherwindsor.com/resume/kristopherwindsor.pdf');
 
