@@ -1,3 +1,4 @@
 <Files index.html>
-	Header append Link "</replace-the-san-jose-airport/southbay.png>; rel=preload; as=image"
+  Header unset Link
+  Header append Link "</replace-the-san-jose-airport/southbay.png>; rel=preload; as=image"
 </Files>
