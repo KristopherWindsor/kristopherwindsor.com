@@ -46,6 +46,11 @@ function animateRachel() {
     return false;
 }
 
+function animateBen() {
+    document.getElementById("bsplash").className += " showImage";
+    return false;
+}
+
 function animateSanJose() {
     document.getElementById("living").className += " showImage";
     return false;
@@ -75,6 +80,7 @@ function startKristopherSpeech() {
 function postload() {
     // Loading hidden background images is deferred
     document.getElementById("rsplash").className += " activated";
+    document.getElementById("bsplash").className += " activated";
     document.getElementById("living").className += " activated";
 
     // Load speakers for maximum base

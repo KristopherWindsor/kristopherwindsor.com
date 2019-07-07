@@ -4,6 +4,8 @@
 	Header append Link "</img/bobble-me2.jpg>; rel=preload; as=image"
 
 	Header append Link "</img/rachel-cutout.png>; rel=preload; as=image"
+	Header append Link "</img/ben.png>; rel=preload; as=image"
+	Header append Link "</img/spaceship.png>; rel=preload; as=image"
 	Header append Link "</img/san-jose-cutout.png>; rel=preload; as=image"
 	Header append Link "</img/github.png>; rel=preload; as=image"
 	Header append Link "</img/linkedin.png>; rel=preload; as=image"
