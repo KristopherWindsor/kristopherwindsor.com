@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My website setup</title>
+	<link rel="shortcut icon" href="/favicon.png">
+	<style>
+		h1 {font-size: 50pt;}
+		h2 {font-size: 40pt;}
+		img {max-width: 95vw; max-height: 95vh;}
+		p, li {font-size: 20pt; line-height: 28pt;}
+	</style>
+</head>
+<body>
+
+<h1>My website setup</h1>
+
+<p>In this post, I’ll cover the approach I have taken to host my personal websites, including this one and <a href="https://windsorfamilyfarm.com/">windsorfamilyfarm.com</a>.</p>
+
+<h2>Context</h2>
+
+<p>From 2007- 2016, I was hosting my websites via shared hosting. You can host unlimited domains for about $5 / month, but you don’t have full access to the server. My hosting provider (as was typical) was primarily for Apache + PHP 5. You couldn’t use Node or PHP 7 or Docker there. But a bigger problem was the frequent downtime, which I noticed as soon as I started using Uptime Robot (free monitoring).</p>
+<p>I host about 10 domains, but they all have low traffic and aren’t revenue-driving or otherwise critical sites. A lot of the traffic is coming from northern California.</p>
+
+<h2>Goals</h2>
+
+<p>I optimized for these things when looking for a solution:
+
+<ul>
+	<li>Good uptime, between 99% and 99.9% uptime (not 5 9’s)</li>
+	<li>Fast response time for visitors in northern California</li>
+	<li>Versatile, i.e. allowing me to run Node, PHP, etc.</li>
+	<li>Cheap – the main thing here is that I do not want to be billed per domain</li>
+	<li>HTTPS support mandatory</li>
+</ul>
+</p>
+
+<p>Some things I did NOT optimize for:
+<ul>
+	<li>A non-technical / push-button solution -- I was interested in learning some new tech along the way, and my approach will not work for a non-technical person</li>
+	<li>Automatic failure recovery – if my websites go down, I might need to get online to fix it myself because I have no support person, auto scaling mechanism, or disaster recovery solution</li>
+	<li>Private code – part of my solution involves hosting my code on a free GitHub account, so the code is available for anyone to see</li>
+</ul>
+</p>
+
+<h2>Solution – hosting</h2>
+
+<p>My solution involves running each website in its own container(s). I pay for one Linux server and run all containers there. Some cloud providers allow you to pay directly for the containers that you run, but that has implications on pricing, learning curve, and vendor lock-in.</p>
+<p>While I went with AWS / EC2, other cloud providers would be just as good. I chose AWS in part because that is the market leader, so that experience might be valuable in my day job.</p>
+
+<h2>Reverse proxy</h2>
+
+<p>Because we want requests for different domains to be handled by different containers, we need a reverse proxy that will route requests to the correct container. For this, I ran <a href="https://hub.docker.com/r/jwilder/nginx-proxy/">this Nginx reverse proxy container</a>.</p>
+
+<h2>Database</h2>
+
+<p>Because most of my websites use MySQL and there is some overhead to running MySQL, I run a single instance (one container) of MySQL, which is shared by all websites. Each website uses its own DB credentials and database.</p>
+
+<h2>Solution – Cloudflare</h2>
+
+<p>Cloudflare sits between the user and my EC2 instance. Cloudflare serves a few purposes for me:
+<ul>
+	<li>TLS terminates at Cloudflare. The user gets a secure HTTPS web page, but I do not do any work on the EC2 / container side to support HTTPS. This can also be a speed improvement for users outside of northern California because Cloudflare will terminate TLS near the user.</li>
+	<li>Cloudflare is a CDN. Static images are cached and served by Cloudflare, which reduces AWS bandwidth costs. This can also be a speed improvement for users outside of northern California.</li>
+	<li>Cloudflare provides free nameservers / DNS hosting for domains, whereas this is not free on AWS / Route 53.</li>
+	<li>It provides HTTP/2 server push support. This can be a speed improvement if you use it in your websites, and I use it for my homepage as you can see <a href="https://github.com/KristopherWindsor/kristopherwindsor.com/blob/master/src/.htaccess">here</a>.</li>
+</ul>
+</p>
+
+<h2>Solution – deployment</h2>
+
+<p>Deployment is initiated by a code push to GitHub, which triggers Docker Hub to build a Docker image from the code. One container running on the EC2 instance is <a href="https://hub.docker.com/r/v2tec/watchtower/">watchtower</a> which polls for new Docker images. When a new Docker image is found for a website, then watchtower will stop the container for the website, pull the new image, and start a new container.</p>
+
+<img src="deployment.png">
+
+<h2>Solution – backups</h2>
+
+<p>I built a custom solution for backups for cost reasons, taking advantage of the server (NAS) that I run at my house.
+<ul>
+	<li>A script on the EC2 instance does a daily MySQL dump to a file</li>
+	<li>A script on my NAS does a daily rsync of the files from EC2 (including the DB dump) to the NAS, to a folder like /xyz/day_of_month/.</li>
+</ul>
+</p>
+
+<p>This gives me 30 days of daily backups. One improvement I would like to make is to also have monthly backups going back 6-12 months.</p>
+
+<p>I also have one snapshot of my EC2 instance stored on AWS, but it is a manual backup and is usually months old.</p>
+
+<h2>Solution – monitoring</h2>
+
+<p>I use Uptime Robot to get alerts if any websites go down. I also have Uptime Robot monitoring a stats page and will be alerted if the server runs low on memory or if MySQL crashes.</p>
+
+<h2>Solution -- pricing</h2>
+
+<p>
+<ul>
+	<li>Cloudflare, GitHub, Docker Hub, and Uptime Robot are free.</li>
+	<li>For EC2, I have a single t2.small instance, which is a reserved instance prepaid for 3 years (standard term). The price for this is currently $315 for 3 years in US West, or $8.75 per month.</li>
+	<li>EC2 storage cost for 26GB of disk + 1 snapshot (backup) is $4 per month.</li>
+	<li>Monthly AWS bandwidth cost is usually less than $1 per month.</li>
+	<li>Domain names cost extra, and I use Namecheap for that.</li>
+</ul>
+</p>
+
+<h2>Future improvement</h2>
+
+<p>Currently each container is run using “docker run” with various arguments such as mounted volumes and memory limits. These commands are not in source control. It would be great to put these in source control, either as-is or by using Docker Compose.</p>
+
+<h2>Results</h2>
+
+<p>The websites have been up and required very little maintenance for the past two years.</p>
+
+<p>
+Some pain points (mostly from the first year of operations):
+<ul>
+	<li>A few times, I saw that a certain crawler would flood one of my Wordpress sites with requests, which would cause MySQL to be stopped by the OOM killer. I added a script to restart MySQL in case it was down, tightened the memory limits on the Wordpress container, and lowered the Apache worker thread limits on the Wordpress container. This fixed the issue.</li>
+	<li>There was one time when it would have been very helpful to have a 6-month-old or 12-month-old backup of the server. Some user-uploaded files for a particular site were deleted, and we did not notice for a few months.</li>
+	<li>There were a couple interruptions to the deployment flow. Either the GitHub &lt;-&gt; Docker Hub connection was broken, or watchtower was erroring. In each case, I did not notice the problem immediately.</li>
+</ul>
+</p>
+
+</body>
+</html>
